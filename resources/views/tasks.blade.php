@@ -2,7 +2,8 @@
 
 @section('content')
     <h1>Task List</h1>
-    <form action="/tasks" method="POST" class="form-horizontal">
+    <!--<form action="/tasks" method="POST" class="form-horizontal">-->
+    <form action="{{ url('tasks') }}" method="POST" class="form-horizontal">
         {{ csrf_field() }}
         <!-- Task Name -->
         <div class="form-group">
@@ -37,7 +38,8 @@
                         <div>{{ $task->name }}</div>
                     </td>
                     <td>
-                        <form action="/tasks/{{ $task->id }}" method="POST">
+                        <!-- <form action="/tasks/{{ $task->id }}" method="POST"> -->
+                        <form action="{{url('tasks/' .  $task->id) }}" method="POST">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}                    
                             <button>Delete Task</button>
